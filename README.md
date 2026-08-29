@@ -8,6 +8,12 @@ Smart cities run on cameras — traffic junctions, CCTV, citizen-reported pothol
 
 This application sits in front of those pipelines as a quality gate. A camera or citizen uploads an image; the system scores it (blur, exposure, noise, corruption, overall defect likelihood); if it's acceptable it can be forwarded to the real downstream pipeline, and if it's degraded or defective it's flagged for recapture or maintenance — logged for a dashboard instead of silently corrupting whatever analysis runs next.
 
+## Frontend
+
+![Frontend UI](frontend.jpeg)
+
+A single-page interface for uploading an image and viewing its quality score, label, and detected issues in real time.
+
 ## Architecture
 
 ```
@@ -88,7 +94,7 @@ Split **by reference image** (not by individual distorted image) into train/val/
 - Validation: 780 images
 - Test: 845 images
 
-**Demo/generalization set:** 40 real traffic-camera images (Kaggle "Traffic Detection Project" dataset), synthetically degraded with our own script (`degrade_images.py`) covering blur, under/over-exposure, noise, and corruption at 3 severity levels, plus untouched clean images — used specifically to test generalization to a different visual domain than the training set, and to produce the sample images required for submission (see `data/demo_degraded/`).
+**Demo/generalization set:** 40 real traffic-camera images (Kaggle "Traffic Detection Project" dataset), synthetically degraded with our own script (`degrade_images.py`) covering blur, under/over-exposure, noise, and corruption at 3 severity levels, plus untouched clean images — used specifically to test generalization to a different visual domain than the training set, and to produce the sample images shown below.
 
 ## Model
 
@@ -96,7 +102,13 @@ Split **by reference image** (not by individual distorted image) into train/val/
 
 **Training:** 8 epochs, Adam optimizer (lr=1e-4), cross-entropy loss, best checkpoint selected by validation accuracy (not final epoch — see Evaluation below for why).
 
-**Hybrid design:** the CNN alone is not the final decision-maker. Its output is combined with 5 classical, physically-grounded CV signals (blur via Laplacian variance, exposure via brightness/clipping, noise via high-frequency residual MAD, corruption via JPEG-blockiness detection) through a fusion rule (see `main.py::fuse_prediction`). This is what the assessment brief calls a hybrid approach — image-quality features combined with a learned model — and it exists for a concrete, tested reason (see Evaluation).
+**Hybrid design:** the CNN alone is not the final decision-maker. Its output is combined with 5 classical, physically-grounded CV signals (blur via Laplacian variance, exposure via brightness/clipping, noise via high-frequency residual MAD, corruption via JPEG-blockiness detection) through a fusion rule (see `main.py::fuse_prediction`) — image-quality features combined with a learned model, adopted because pure CNN predictions proved unreliable across visual domains (see Evaluation below).
+
+### Training metrics
+
+![Training metrics](CNN/metrics.jpeg)
+
+Training vs. validation accuracy/loss across epochs. Validation performance plateaus around epoch 3–4 while training accuracy keeps climbing — the overfitting signature described below, and the reason the *best* checkpoint (not the last one) was used.
 
 ## API
 
@@ -166,16 +178,15 @@ No migration step needed — the table is created automatically at startup if it
 | DEFECTIVE | 0.719 | 0.868 | 0.786 |
 | **Overall accuracy** | | | **0.647** |
 
-Confusion matrix (rows = true, columns = predicted; order ACCEPTABLE/DEGRADED/DEFECTIVE):
-```
-[[ 89 117  16]
- [ 31 182  92]
- [  0  42 276]]
-```
+### Confusion matrix
+
+![Confusion matrix](CNN/Confusion_matrix.jpeg)
+
+Rows = true label, columns = predicted label (order: ACCEPTABLE / DEGRADED / DEFECTIVE).
 
 **Key finding:** the model almost never confuses the two extremes — only 16 of 845 truly-ACCEPTABLE-or-DEFECTIVE images were predicted as the opposite extreme. Nearly all errors are between *adjacent* classes, meaning the model learned the ordinal structure of quality even though it was trained as plain 3-way classification. DEFECTIVE recall (0.868) is the strongest — arguably the most important capability for a gatekeeper system, since catching the worst images matters more than perfectly ranking borderline ones.
 
-**Training/overfitting note:** training accuracy reached 0.85+ by epoch 8, while validation accuracy plateaued around 0.65–0.70 from epoch 3 onward and validation loss began increasing — a standard overfitting signature. The best checkpoint (by validation accuracy, epoch 7) was used rather than the final epoch's weights.
+**Training/overfitting note:** training accuracy reached 0.85+ by epoch 8, while validation accuracy plateaued around 0.65–0.70 from epoch 3 onward and validation loss began increasing — a standard overfitting signature, visible in the training metrics chart above. The best checkpoint (by validation accuracy, epoch 7) was used rather than the final epoch's weights.
 
 ### Generalization test (40 real traffic-camera images, different domain than training)
 
@@ -186,7 +197,7 @@ Confusion matrix (rows = true, columns = predicted; order ACCEPTABLE/DEGRADED/DE
 
 **Finding:** the CNN, trained entirely on KADID-10k's curated reference photography, showed a clear domain-shift problem when applied to real traffic-camera imagery — it flagged *every single clean traffic image* as DEGRADED or DEFECTIVE, apparently because the visual style (compression, resolution, lighting) of camera footage differs from curated reference photos even when technically undegraded.
 
-Fusing the CNN's prediction with 5 classical CV flags (blur/exposure/noise/corruption) corrected this: when zero CV issues are physically detected, the image is called ACCEPTABLE regardless of the CNN's raw label; when exactly one issue is detected, DEFECTIVE calls are capped down to DEGRADED unless a second corroborating signal is present. This more than doubled cross-domain accuracy (35% → 80%) and is the practical justification for the hybrid architecture, not just a checkbox requirement.
+Fusing the CNN's prediction with 5 classical CV flags (blur/exposure/noise/corruption) corrected this: when zero CV issues are physically detected, the image is called ACCEPTABLE regardless of the CNN's raw label; when exactly one issue is detected, DEFECTIVE calls are capped down to DEGRADED unless a second corroborating signal is present. This more than doubled cross-domain accuracy (35% → 80%) and is the practical justification for the hybrid architecture.
 
 ### Known limitations / failure cases
 
@@ -215,13 +226,17 @@ SCRC/
 ├── frontend/
 │   ├── Dockerfile
 │   └── index.html               # single-file UI
+├── CNN/
+│   ├── metrics.jpeg              # training/validation curves
+│   └── Confusion_matrix.jpeg     # test-set confusion matrix
+├── frontend.jpeg                 # UI screenshot
 ├── data/
-│   └── demo_degraded/           # sample images + ground-truth labels.json
-├── degrade_images.py            # synthetic degradation generator
-├── organize_kadid.py            # KADID-10k dataset preparation
+│   └── demo_degraded/            # sample images + ground-truth labels.json
+├── degrade_images.py              # synthetic degradation generator
+├── organize_kadid.py               # KADID-10k dataset preparation
 └── README.md
 ```
 
 ## Sample images
 
-`data/demo_degraded/` contains 40 smart-city (traffic camera) images with controlled synthetic degradations across all 5 categories plus untouched clean examples, along with `labels.json` giving the ground-truth degradation type, severity, and quality label for each — used for the generalization evaluation above and provided here as the required sample image set.
+`data/demo_degraded/` contains 40 smart-city (traffic camera) images with controlled synthetic degradations across all 5 categories plus untouched clean examples, along with `labels.json` giving the ground-truth degradation type, severity, and quality label for each — used for the generalization evaluation above.
