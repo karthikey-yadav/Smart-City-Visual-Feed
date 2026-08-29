@@ -1,0 +1,41 @@
+filename,blur_score,is_blurry,brightness_mean,is_underexposed,is_overexposed,dark_clip_fraction,bright_clip_fraction,noise_sigma,is_noisy,contrast,saturation_mean,is_likely_corrupt,blockiness_score,flat_block_fraction
+aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d - Copy - Copy - Copy_clean.jpg,4130.71,False,75.508,True,False,0.0659,0.0027,7.413,False,0.9891,54.058,False,0.89,0.0013
+aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d - Copy - Copy_blur_sev1.jpg,63.609,True,75.486,False,False,0.0428,0.0,2.965,False,0.9661,48.951,False,1.004,0.002
+aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d - Copy_overexposure_sev1.jpg,5659.694,False,112.213,True,False,0.0515,0.0297,10.378,False,0.9922,53.646,False,0.886,0.0007
+aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d_underexposure_sev1.jpg,1531.04,False,44.907,True,False,0.0972,0.0,4.448,False,1.0,53.607,False,0.891,0.0053
+aguanambi-1000_png_jpg.rf.dc59d3c5df5d991c1475e5957ea9948c_clean.jpg,804.398,False,100.79,False,False,0.0018,0.0001,5.93,False,0.8378,36.854,False,0.96,0.0059
+aguanambi-1000_png_jpg.rf.f425c626b206bb27a1b73fa7e38d6361_blur_sev3.jpg,2.85,True,111.176,False,False,0.0,0.0,0.0,False,0.6833,30.998,False,1.17,0.0894
+aguanambi-1085_png_jpg.rf.60d1095729839f1644f21e2a31e55cec_corruption_sev1.jpg,2411.428,False,127.155,False,False,0.0015,0.0026,8.896,False,0.7805,13.818,True,1.317,0.0
+aguanambi-1085_png_jpg.rf.9560a8e9822039cd2b4566dd71f288a7_corruption_sev2.jpg,1582.329,False,119.143,False,False,0.0017,0.0017,4.448,False,0.7931,32.309,True,1.938,0.0473
+aguanambi-1085_png_jpg.rf.ba8bcc4fd6c7cae9f610e611e300bdf1_clean.jpg,4181.256,False,159.728,False,False,0.0025,0.0123,7.413,False,0.6156,26.884,False,0.863,0.0
+aguanambi-1090_png_jpg.rf.6bc72d297979796c1a87ba754fec824c_underexposure_sev2.jpg,134.112,False,41.61,True,False,0.0185,0.0,1.483,False,0.8,37.127,False,0.845,0.1085
+aguanambi-1090_png_jpg.rf.906544c343fd56ec0ed1ed1f48e8e7c2_corruption_sev2.jpg,1756.953,False,86.259,False,False,0.0453,0.0,4.448,False,0.9888,49.679,True,2.025,0.0289
+aguanambi-1090_png_jpg.rf.da8757883707a0aba29fb71deb2f8872_noise_sev1.jpg,4967.094,False,139.342,False,False,0.002,0.0043,11.861,True,0.7323,21.832,False,0.938,0.0
+aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9 - Copy - Copy - Copy_clean.jpg,6422.187,False,100.382,False,False,0.03,0.0044,8.896,False,0.9826,36.723,False,0.931,0.0
+aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9 - Copy - Copy_overexposure_sev2.jpg,10765.793,False,190.736,False,True,0.0169,0.444,10.378,False,0.9615,29.392,False,0.919,0.0283
+aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9 - Copy_corruption_sev2.jpg,1946.301,False,100.981,False,False,0.0252,0.0005,7.413,False,0.9716,19.228,True,2.055,0.0046
+aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9_blur_sev1.jpg,82.215,True,100.371,False,False,0.0121,0.0,2.965,False,0.9109,32.414,False,1.051,0.0
+aguanambi-1100_png_jpg.rf.4cb9aaea57075d665b72dd30eda9aa06_clean.jpg,5112.245,False,142.73,False,False,0.003,0.0124,8.896,False,0.7301,29.559,False,0.933,0.0
+aguanambi-1100_png_jpg.rf.d80a5e24fefe8ec0b7f3eab360ef4424_underexposure_sev2.jpg,132.129,False,41.623,True,False,0.0241,0.0,1.483,False,0.8353,36.396,False,0.937,0.1091
+aguanambi-1110_png_jpg.rf.9439331a624f8afc4871caf0ffe8f7cc_blur_sev1.jpg,92.307,True,166.702,False,False,0.0,0.0184,4.448,False,0.506,22.459,False,0.995,0.0
+aguanambi-1110_png_jpg.rf.944e2d609db4f393bd4dce0f40acafc8_blur_sev2.jpg,9.663,True,109.326,False,False,0.0,0.0011,1.483,False,0.7689,35.288,False,1.091,0.0105
+aguanambi-1110_png_jpg.rf.aca9432a9bcd0ef761dcb9b9b7e4d130_clean.jpg,5958.028,False,50.297,True,False,0.2545,0.0042,7.413,False,1.0,46.864,False,0.939,0.0053
+aguanambi-1115_png_jpg.rf.57b847951689b9dfc62a8199603f8ec1_overexposure_sev2.jpg,7649.243,False,171.727,False,True,0.0233,0.3124,10.378,False,0.9615,75.155,False,0.921,0.0388
+aguanambi-1115_png_jpg.rf.5982f904a783a1a61fec2c0562e64e0d_overexposure_sev1.jpg,1870.843,False,168.534,False,True,0.0005,0.1587,7.413,False,0.7895,35.581,False,0.849,0.0381
+aguanambi-1115_png_jpg.rf.603b3e12b0e814c65e13cf759d10d326_overexposure_sev2.jpg,8226.941,False,215.77,False,True,0.0022,0.5848,5.93,False,0.6721,10.311,False,0.911,0.0796
+aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00 - Copy - Copy - Copy_clean.jpg,1027.312,False,141.403,False,False,0.0,0.0117,5.93,False,0.6939,18.436,False,0.936,0.002
+aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00 - Copy - Copy_underexposure_sev3.jpg,32.862,True,20.745,True,False,0.0711,0.0,1.483,False,0.7209,20.014,False,0.908,0.3051
+aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00 - Copy_overexposure_sev3.jpg,963.629,False,246.314,False,True,0.0,0.868,0.0,False,0.3043,4.364,True,0.941,0.4819
+aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00_blur_sev3.jpg,3.3,True,141.402,False,False,0.0,0.0029,0.0,False,0.6014,17.082,False,1.132,0.0394
+aguanambi-1120_png_jpg.rf.264c29bc6c5616e553e1f5fbc8ba8512_clean.jpg,8484.961,False,148.302,False,False,0.006,0.0204,10.378,False,0.7388,22.274,False,0.922,0.0
+aguanambi-1120_png_jpg.rf.85a5d581484d3dd2e72361e5e0952321_underexposure_sev3.jpg,68.845,True,24.493,True,False,0.0083,0.0,1.483,False,0.5833,15.292,False,0.911,0.2196
+aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a - Copy - Copy - Copy_underexposure_sev1.jpg,784.66,False,100.938,False,False,0.001,0.0,4.448,False,0.5612,34.181,False,0.852,0.0151
+aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a - Copy - Copy_noise_sev2.jpg,7258.302,False,167.543,False,False,0.0005,0.0382,17.791,True,0.6154,39.88,False,0.937,0.0
+aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a - Copy_clean.jpg,2147.11,False,168.897,False,False,0.0008,0.0443,5.93,False,0.5535,33.659,False,0.85,0.0026
+aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a_overexposure_sev3.jpg,1477.007,False,253.082,False,True,0.0005,0.9523,0.0,False,0.0805,2.838,True,0.957,0.5148
+aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979 - Copy - Copy - Copy_corruption_sev1.jpg,1151.227,False,116.19,False,False,0.0026,0.0043,5.93,False,0.8449,36.89,True,1.228,0.0013
+aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979 - Copy - Copy_overexposure_sev1.jpg,2027.124,False,169.549,False,True,0.0006,0.178,7.413,False,0.7895,35.251,False,0.824,0.0388
+aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979 - Copy_clean.jpg,1030.843,False,116.194,False,False,0.0013,0.0044,5.93,False,0.8367,37.64,False,0.832,0.002
+aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979_underexposure_sev1.jpg,374.039,False,69.306,False,False,0.0054,0.0,2.965,False,0.8367,38.194,False,0.831,0.023
+aguanambi-1120_png_jpg.rf.dbd2a5e07780511ff9704003de767b41 - Copy - Copy - Copy_overexposure_sev2.jpg,2470.835,False,208.405,False,True,0.0003,0.5201,4.448,False,0.7057,25.358,False,0.902,0.2347
+aguanambi-1120_png_jpg.rf.dbd2a5e07780511ff9704003de767b41 - Copy - Copy_overexposure_sev1.jpg,2027.574,False,169.551,False,True,0.0006,0.1779,7.413,False,0.7895,35.242,False,0.926,0.0394

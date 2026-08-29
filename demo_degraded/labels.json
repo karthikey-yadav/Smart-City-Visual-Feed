@@ -1,0 +1,282 @@
+[
+  {
+    "filename": "aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d - Copy - Copy - Copy_clean.jpg",
+    "source": "aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d - Copy - Copy - Copy.jpg",
+    "degradation_type": "none",
+    "severity": 0,
+    "quality_label": "ACCEPTABLE"
+  },
+  {
+    "filename": "aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d - Copy - Copy_blur_sev1.jpg",
+    "source": "aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d - Copy - Copy.jpg",
+    "degradation_type": "blur",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d - Copy_overexposure_sev1.jpg",
+    "source": "aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d - Copy.jpg",
+    "degradation_type": "overexposure",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d_underexposure_sev1.jpg",
+    "source": "aguanambi-1000_png_jpg.rf.0ab6f274892b9b370e6441886b2d7b9d.jpg",
+    "degradation_type": "underexposure",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1000_png_jpg.rf.dc59d3c5df5d991c1475e5957ea9948c_clean.jpg",
+    "source": "aguanambi-1000_png_jpg.rf.dc59d3c5df5d991c1475e5957ea9948c.jpg",
+    "degradation_type": "none",
+    "severity": 0,
+    "quality_label": "ACCEPTABLE"
+  },
+  {
+    "filename": "aguanambi-1000_png_jpg.rf.f425c626b206bb27a1b73fa7e38d6361_blur_sev3.jpg",
+    "source": "aguanambi-1000_png_jpg.rf.f425c626b206bb27a1b73fa7e38d6361.jpg",
+    "degradation_type": "blur",
+    "severity": 3,
+    "quality_label": "DEFECTIVE"
+  },
+  {
+    "filename": "aguanambi-1085_png_jpg.rf.60d1095729839f1644f21e2a31e55cec_corruption_sev1.jpg",
+    "source": "aguanambi-1085_png_jpg.rf.60d1095729839f1644f21e2a31e55cec.jpg",
+    "degradation_type": "corruption",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1085_png_jpg.rf.9560a8e9822039cd2b4566dd71f288a7_corruption_sev2.jpg",
+    "source": "aguanambi-1085_png_jpg.rf.9560a8e9822039cd2b4566dd71f288a7.jpg",
+    "degradation_type": "corruption",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1085_png_jpg.rf.ba8bcc4fd6c7cae9f610e611e300bdf1_clean.jpg",
+    "source": "aguanambi-1085_png_jpg.rf.ba8bcc4fd6c7cae9f610e611e300bdf1.jpg",
+    "degradation_type": "none",
+    "severity": 0,
+    "quality_label": "ACCEPTABLE"
+  },
+  {
+    "filename": "aguanambi-1090_png_jpg.rf.6bc72d297979796c1a87ba754fec824c_underexposure_sev2.jpg",
+    "source": "aguanambi-1090_png_jpg.rf.6bc72d297979796c1a87ba754fec824c.jpg",
+    "degradation_type": "underexposure",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1090_png_jpg.rf.906544c343fd56ec0ed1ed1f48e8e7c2_corruption_sev2.jpg",
+    "source": "aguanambi-1090_png_jpg.rf.906544c343fd56ec0ed1ed1f48e8e7c2.jpg",
+    "degradation_type": "corruption",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1090_png_jpg.rf.da8757883707a0aba29fb71deb2f8872_noise_sev1.jpg",
+    "source": "aguanambi-1090_png_jpg.rf.da8757883707a0aba29fb71deb2f8872.jpg",
+    "degradation_type": "noise",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9 - Copy - Copy - Copy_clean.jpg",
+    "source": "aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9 - Copy - Copy - Copy.jpg",
+    "degradation_type": "none",
+    "severity": 0,
+    "quality_label": "ACCEPTABLE"
+  },
+  {
+    "filename": "aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9 - Copy - Copy_overexposure_sev2.jpg",
+    "source": "aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9 - Copy - Copy.jpg",
+    "degradation_type": "overexposure",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9 - Copy_corruption_sev2.jpg",
+    "source": "aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9 - Copy.jpg",
+    "degradation_type": "corruption",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9_blur_sev1.jpg",
+    "source": "aguanambi-1100_png_jpg.rf.09650bd053f33e6057e6e1840ca909f9.jpg",
+    "degradation_type": "blur",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1100_png_jpg.rf.4cb9aaea57075d665b72dd30eda9aa06_clean.jpg",
+    "source": "aguanambi-1100_png_jpg.rf.4cb9aaea57075d665b72dd30eda9aa06.jpg",
+    "degradation_type": "none",
+    "severity": 0,
+    "quality_label": "ACCEPTABLE"
+  },
+  {
+    "filename": "aguanambi-1100_png_jpg.rf.d80a5e24fefe8ec0b7f3eab360ef4424_underexposure_sev2.jpg",
+    "source": "aguanambi-1100_png_jpg.rf.d80a5e24fefe8ec0b7f3eab360ef4424.jpg",
+    "degradation_type": "underexposure",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1110_png_jpg.rf.9439331a624f8afc4871caf0ffe8f7cc_blur_sev1.jpg",
+    "source": "aguanambi-1110_png_jpg.rf.9439331a624f8afc4871caf0ffe8f7cc.jpg",
+    "degradation_type": "blur",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1110_png_jpg.rf.944e2d609db4f393bd4dce0f40acafc8_blur_sev2.jpg",
+    "source": "aguanambi-1110_png_jpg.rf.944e2d609db4f393bd4dce0f40acafc8.jpg",
+    "degradation_type": "blur",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1110_png_jpg.rf.aca9432a9bcd0ef761dcb9b9b7e4d130_clean.jpg",
+    "source": "aguanambi-1110_png_jpg.rf.aca9432a9bcd0ef761dcb9b9b7e4d130.jpg",
+    "degradation_type": "none",
+    "severity": 0,
+    "quality_label": "ACCEPTABLE"
+  },
+  {
+    "filename": "aguanambi-1115_png_jpg.rf.57b847951689b9dfc62a8199603f8ec1_overexposure_sev2.jpg",
+    "source": "aguanambi-1115_png_jpg.rf.57b847951689b9dfc62a8199603f8ec1.jpg",
+    "degradation_type": "overexposure",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1115_png_jpg.rf.5982f904a783a1a61fec2c0562e64e0d_overexposure_sev1.jpg",
+    "source": "aguanambi-1115_png_jpg.rf.5982f904a783a1a61fec2c0562e64e0d.jpg",
+    "degradation_type": "overexposure",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1115_png_jpg.rf.603b3e12b0e814c65e13cf759d10d326_overexposure_sev2.jpg",
+    "source": "aguanambi-1115_png_jpg.rf.603b3e12b0e814c65e13cf759d10d326.jpg",
+    "degradation_type": "overexposure",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00 - Copy - Copy - Copy_clean.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00 - Copy - Copy - Copy.jpg",
+    "degradation_type": "none",
+    "severity": 0,
+    "quality_label": "ACCEPTABLE"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00 - Copy - Copy_underexposure_sev3.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00 - Copy - Copy.jpg",
+    "degradation_type": "underexposure",
+    "severity": 3,
+    "quality_label": "DEFECTIVE"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00 - Copy_overexposure_sev3.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00 - Copy.jpg",
+    "degradation_type": "overexposure",
+    "severity": 3,
+    "quality_label": "DEFECTIVE"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00_blur_sev3.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.0214784a6a3f9b3080174e67c2ef3a00.jpg",
+    "degradation_type": "blur",
+    "severity": 3,
+    "quality_label": "DEFECTIVE"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.264c29bc6c5616e553e1f5fbc8ba8512_clean.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.264c29bc6c5616e553e1f5fbc8ba8512.jpg",
+    "degradation_type": "none",
+    "severity": 0,
+    "quality_label": "ACCEPTABLE"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.85a5d581484d3dd2e72361e5e0952321_underexposure_sev3.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.85a5d581484d3dd2e72361e5e0952321.jpg",
+    "degradation_type": "underexposure",
+    "severity": 3,
+    "quality_label": "DEFECTIVE"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a - Copy - Copy - Copy_underexposure_sev1.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a - Copy - Copy - Copy.jpg",
+    "degradation_type": "underexposure",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a - Copy - Copy_noise_sev2.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a - Copy - Copy.jpg",
+    "degradation_type": "noise",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a - Copy_clean.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a - Copy.jpg",
+    "degradation_type": "none",
+    "severity": 0,
+    "quality_label": "ACCEPTABLE"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a_overexposure_sev3.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.bac4ac8e15dd4c9b16d1d08981ae6e1a.jpg",
+    "degradation_type": "overexposure",
+    "severity": 3,
+    "quality_label": "DEFECTIVE"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979 - Copy - Copy - Copy_corruption_sev1.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979 - Copy - Copy - Copy.jpg",
+    "degradation_type": "corruption",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979 - Copy - Copy_overexposure_sev1.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979 - Copy - Copy.jpg",
+    "degradation_type": "overexposure",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979 - Copy_clean.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979 - Copy.jpg",
+    "degradation_type": "none",
+    "severity": 0,
+    "quality_label": "ACCEPTABLE"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979_underexposure_sev1.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.db238df5bc7656a2bd55298bb27d7979.jpg",
+    "degradation_type": "underexposure",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.dbd2a5e07780511ff9704003de767b41 - Copy - Copy - Copy_overexposure_sev2.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.dbd2a5e07780511ff9704003de767b41 - Copy - Copy - Copy.jpg",
+    "degradation_type": "overexposure",
+    "severity": 2,
+    "quality_label": "DEGRADED"
+  },
+  {
+    "filename": "aguanambi-1120_png_jpg.rf.dbd2a5e07780511ff9704003de767b41 - Copy - Copy_overexposure_sev1.jpg",
+    "source": "aguanambi-1120_png_jpg.rf.dbd2a5e07780511ff9704003de767b41 - Copy - Copy.jpg",
+    "degradation_type": "overexposure",
+    "severity": 1,
+    "quality_label": "DEGRADED"
+  }
+]

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Feed Quality Gatekeeper</title>
+<style>
+  :root {
+    --bg: #0b0e11;
+    --panel: #12161b;
+    --panel-border: #232a32;
+    --text: #e6e9ec;
+    --text-dim: #8a939c;
+    --accent: #4fd1c5;
+    --ok: #3ecf8e;
+    --warn: #f5b942;
+    --bad: #f0554d;
+    --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+  }
+  header {
+    padding: 28px 32px 20px;
+    border-bottom: 1px solid var(--panel-border);
+  }
+  header .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+  }
+  header p {
+    margin: 6px 0 0;
+    color: var(--text-dim);
+    font-size: 14px;
+    max-width: 640px;
+    line-height: 1.5;
+  }
+  main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 28px 32px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  @media (min-width: 860px) {
+    main { grid-template-columns: 1fr 1fr; }
+    main .full-width { grid-column: 1 / -1; }
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .panel h2 {
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  #dropzone {
+    border: 1.5px dashed var(--panel-border);
+    border-radius: 8px;
+    padding: 36px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  #dropzone:hover, #dropzone.drag-over {
+    border-color: var(--accent);
+    background: rgba(79,209,197,0.05);
+  }
+  #dropzone p { margin: 0; color: var(--text-dim); font-size: 14px; }
+  #dropzone .icon { font-size: 28px; margin-bottom: 10px; opacity: 0.7; }
+  #fileInput { display: none; }
+  #preview {
+    margin-top: 16px;
+    display: none;
+  }
+  #preview img {
+    max-width: 100%;
+    max-height: 260px;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto;
+  }
+  button.primary {
+    width: 100%;
+    margin-top: 16px;
+    padding: 11px;
+    background: var(--accent);
+    color: #05201d;
+    border: none;
+    border-radius: 6px;
+    font-weight: 650;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  button.primary:hover { opacity: 0.88; }
+  button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  #resultPanel .empty-state {
+    color: var(--text-dim);
+    font-size: 14px;
+    padding: 40px 10px;
+    text-align: center;
+  }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .status-badge.ACCEPTABLE { background: rgba(62,207,142,0.15); color: var(--ok); }
+  .status-badge.DEGRADED { background: rgba(245,185,66,0.15); color: var(--warn); }
+  .status-badge.DEFECTIVE { background: rgba(240,85,77,0.15); color: var(--bad); }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: currentColor;
+  }
+  .score-row {
+    display: flex; align-items: baseline; gap: 10px; margin: 16px 0 4px;
+  }
+  .score-row .score { font-size: 40px; font-weight: 700; font-family: var(--mono); }
+  .score-row .score-label { color: var(--text-dim); font-size: 13px; }
+  .issue-list { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 8px; }
+  .issue-item {
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+  .issue-item .type { text-transform: capitalize; font-weight: 600; }
+  .issue-item .meta { color: var(--text-dim); font-family: var(--mono); font-size: 12px; }
+  .sev-high { color: var(--bad); }
+  .sev-medium { color: var(--warn); }
+  .sev-low { color: var(--ok); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; color: var(--text-dim); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 10px; border-bottom: 1px solid var(--panel-border); }
+  td { padding: 9px 10px; border-bottom: 1px solid var(--panel-border); }
+  tr:last-child td { border-bottom: none; }
+  tr.clickable { cursor: pointer; }
+  tr.clickable:hover { background: rgba(255,255,255,0.02); }
+  .mini-badge { font-family: var(--mono); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+  .mini-badge.ACCEPTABLE { background: rgba(62,207,142,0.15); color: var(--ok); }
+  .mini-badge.DEGRADED { background: rgba(245,185,66,0.15); color: var(--warn); }
+  .mini-badge.DEFECTIVE { background: rgba(240,85,77,0.15); color: var(--bad); }
+
+  #errorBanner {
+    display: none;
+    background: rgba(240,85,77,0.1);
+    border: 1px solid rgba(240,85,77,0.3);
+    color: var(--bad);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 14px;
+  }
+  .loading-row { display: flex; align-items: center; gap: 10px; color: var(--text-dim); font-size: 14px; padding: 30px 10px; justify-content: center; }
+  .spinner {
+    width: 16px; height: 16px;
+    border: 2px solid var(--panel-border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .history-empty { color: var(--text-dim); font-size: 13px; padding: 20px 10px; text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Smart City Visual Feed</div>
+  <h1>Quality Gatekeeper</h1>
+  <p>Upload an image from a traffic camera, CCTV feed, or citizen report to check whether it's clean enough for downstream analysis — or flagged for recapture.</p>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>Analyze an image</h2>
+    <div id="dropzone">
+      <div class="icon">&#128247;</div>
+      <p><strong>Click to upload</strong> or drag an image here</p>
+    </div>
+    <input type="file" id="fileInput" accept="image/jpeg,image/png,image/bmp,image/webp">
+    <div id="preview"><img id="previewImg" alt="Preview"></div>
+    <button class="primary" id="analyzeBtn" disabled>Analyze image</button>
+    <div id="errorBanner"></div>
+  </section>
+
+  <section class="panel" id="resultPanel">
+    <h2>Result</h2>
+    <div class="empty-state" id="resultEmpty">No analysis yet — upload an image to get started.</div>
+    <div id="resultContent" style="display:none;"></div>
+  </section>
+
+  <section class="panel full-width">
+    <h2>History</h2>
+    <div id="historyContainer">
+      <div class="history-empty">No analyses recorded yet.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+const API_BASE = "http://localhost:8000";
+
+const dropzone = document.getElementById('dropzone');
+const fileInput = document.getElementById('fileInput');
+const preview = document.getElementById('preview');
+const previewImg = document.getElementById('previewImg');
+const analyzeBtn = document.getElementById('analyzeBtn');
+const errorBanner = document.getElementById('errorBanner');
+const resultEmpty = document.getElementById('resultEmpty');
+const resultContent = document.getElementById('resultContent');
+const historyContainer = document.getElementById('historyContainer');
+
+let selectedFile = null;
+
+dropzone.addEventListener('click', () => fileInput.click());
+dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('drag-over'); });
+dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+dropzone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropzone.classList.remove('drag-over');
+  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', (e) => {
+  if (e.target.files.length) handleFile(e.target.files[0]);
+});
+
+function handleFile(file) {
+  selectedFile = file;
+  errorBanner.style.display = 'none';
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    previewImg.src = e.target.result;
+    preview.style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+  analyzeBtn.disabled = false;
+}
+
+analyzeBtn.addEventListener('click', async () => {
+  if (!selectedFile) return;
+  analyzeBtn.disabled = true;
+  errorBanner.style.display = 'none';
+  resultEmpty.style.display = 'none';
+  resultContent.style.display = 'block';
+  resultContent.innerHTML = `<div class="loading-row"><div class="spinner"></div> Running analysis...</div>`;
+
+  const formData = new FormData();
+  formData.append('file', selectedFile);
+
+  try {
+    const res = await fetch(`${API_BASE}/analyze`, { method: 'POST', body: formData });
+    if (!res.ok) {
+      const errBody = await res.json().catch(() => ({}));
+      throw new Error(errBody.detail || `Request failed (${res.status})`);
+    }
+    const data = await res.json();
+    renderResult(data);
+    loadHistory();
+  } catch (err) {
+    resultContent.style.display = 'none';
+    resultEmpty.style.display = 'block';
+    errorBanner.textContent = `Analysis failed: ${err.message}`;
+    errorBanner.style.display = 'block';
+  } finally {
+    analyzeBtn.disabled = false;
+  }
+});
+
+function renderResult(data) {
+  const issuesHtml = (data.issues && data.issues.length)
+    ? data.issues.map(issue => `
+        <li class="issue-item">
+          <span class="type">${issue.type}</span>
+          <span class="meta"><span class="sev-${issue.severity}">${issue.severity}</span> · conf ${issue.confidence}</span>
+        </li>`).join('')
+    : `<li class="issue-item"><span class="type">No issues detected</span></li>`;
+
+  resultContent.innerHTML = `
+    <span class="status-badge ${data.quality_label}"><span class="status-dot"></span>${data.quality_label}</span>
+    <div class="score-row">
+      <span class="score">${data.quality_score}</span>
+      <span class="score-label">/ 100 quality score</span>
+    </div>
+    <ul class="issue-list">${issuesHtml}</ul>
+  `;
+}
+
+async function loadHistory() {
+  try {
+    const res = await fetch(`${API_BASE}/results?limit=20`);
+    if (!res.ok) throw new Error('Could not load history');
+    const rows = await res.json();
+    if (!rows.length) {
+      historyContainer.innerHTML = `<div class="history-empty">No analyses recorded yet.</div>`;
+      return;
+    }
+    historyContainer.innerHTML = `
+      <table>
+        <thead><tr><th>#</th><th>Filename</th><th>Score</th><th>Label</th><th>Time</th></tr></thead>
+        <tbody>
+          ${rows.map(r => `
+            <tr class="clickable" onclick="viewResult(${r.id})">
+              <td>${r.id}</td>
+              <td>${escapeHtml(r.filename || '—')}</td>
+              <td>${r.quality_score}</td>
+              <td><span class="mini-badge ${r.quality_label}">${r.quality_label}</span></td>
+              <td>${new Date(r.created_at).toLocaleString()}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+    `;
+  } catch (err) {
+    historyContainer.innerHTML = `<div class="history-empty">Couldn't load history: ${err.message}</div>`;
+  }
+}
+
+async function viewResult(id) {
+  resultEmpty.style.display = 'none';
+  resultContent.style.display = 'block';
+  resultContent.innerHTML = `<div class="loading-row"><div class="spinner"></div> Loading...</div>`;
+  try {
+    const res = await fetch(`${API_BASE}/results/${id}`);
+    if (!res.ok) throw new Error('Not found');
+    const data = await res.json();
+    renderResult(data);
+  } catch (err) {
+    errorBanner.textContent = `Could not load result: ${err.message}`;
+    errorBanner.style.display = 'block';
+  }
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Initial load
+loadHistory();
+</script>
+
+</body>
+</html>
